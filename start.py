@@ -10,7 +10,7 @@ def rand_dX(a, b, c):
     return n_sum
 
 points_Nr = 1000000
-dice_Value_max = 6
+dice_Value_max = 20
 dices_Nr = 3
 
 xs = []
@@ -25,12 +25,20 @@ for n2 in range(1, points_Nr):
     dices_sum = rand_dX(1, dice_Value_max, dices_Nr)
     index = dices_sum - 1 * dices_Nr
     # print(n2, dices_sum, index)
-    ys[index] += dices_sum
+    ys[index] += 1
 
-   
+ys_max = max(ys)
 print(ys)
 
-plt.plot(xs, ys)
-plt.xlabel('sample(n)')
-plt.ylabel('voltage(V)')
+_label = "Distribution of " + str(dices_Nr) + 'd' + str(dice_Value_max) + ", # of throws = " + str(points_Nr)
+
+fig, ax = plt.subplots()
+ax.plot(xs, ys)
+
+ax.set(xlabel='sum of dices', ylabel='freq of occurence',
+       title=_label)
+ax.grid()
+plt.ylim(0, ys_max * 1.1)
+
+fig.savefig("test.png")
 plt.show()
