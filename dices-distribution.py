@@ -32,7 +32,6 @@ for dNr in range(1, dices_Nr_max + 1):
     for n2 in range(1, points_Nr):
         dices_sum = rand_dX(1, dice_Value_max, dices_Nr)
         index = dices_sum - 1 * dices_Nr
-        # print(n2, dices_sum, index)
         ys[index] += 1
 
     ys_max = max(ys)
@@ -54,17 +53,13 @@ marker_color = 'red' # 'blue'
 def make_plot(axs):
     box = dict(facecolor='yellow', pad=5, alpha=0.2)
 
-    # Fixing random state for reproducibility
-    # np.random.seed(19680801)
     ax1 = axs[0, 0]
     ax1.plot(xss[0],yss[0], marker='o', markerfacecolor=marker_color, markersize=5, color=plot_color, linewidth=1)
     ax1.set_title(titles[0])
-    #ax1.set_ylabel('misaligned 1', bbox=box)
     ax1.set_ylim(0, ys_maxs[0] * 1.1)
 
     
     ax3 = axs[1, 0]
-    #ax3.set_ylabel('misaligned 2', bbox=box)
     ax3.plot(xss[1],yss[1], marker='o', markerfacecolor=marker_color, markersize=5, color=plot_color, linewidth=1)
     ax3.set_title(titles[1])
     ax3.set_ylim(0, ys_maxs[1] * 1.1)
@@ -83,7 +78,6 @@ def make_plot(axs):
 
 # Plot 1:
 fig, axs = plt.subplots(2, 2)
-#fig.subplots_adjust(left=0.1, wspace=0.6)
 fig.subplots_adjust(top=0.92, bottom=0.08, left=0.10, right=0.95, hspace=0.3,
                     wspace=0.35)
 make_plot(axs)
